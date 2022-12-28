@@ -13,61 +13,40 @@ public class OddNames {
             }
         }
         return result;
-
     }
-
     private static List<String> upperCaseAndBackSorted(List<String> names) {
         Collections.sort(names);
         Collections.reverse(names);
         names.replaceAll(String::toUpperCase);
         return names;
     }
-
-    private static void ascendNumbers(String[] numbers) {
-        System.out.println(Arrays.toString(numbers));
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.println("i - " + i + " val - " + numbers[i]);
-        }
-        System.out.println("-----");
-        String[] temp1 = numbers[0].split(",\\s");
-        String[] temp2 = numbers[1].split(",\\s");
-
-        System.out.println("temp1 " + Arrays.toString(temp1));
-        System.out.println("temp2 " + Arrays.toString(temp2));
-        System.out.println("-----");
-
-        String[] temp = null;
-        List<Integer> fuckingNumbers = new ArrayList<>();
-        List<String> newNumberList = new ArrayList<>();
+    private static List<String> ascendNumbers(String[] numbers) {
+        String[] temp;
+        List<Integer> numbersInInt = new ArrayList<>();
+        List<String> numbersInString = new ArrayList<>();
         for (int i = 0; i < numbers.length; i++) {
             temp = numbers[i].split(",\\s");
-            newNumberList.addAll(List.of(temp));
+            numbersInString.addAll(List.of(temp));
         }
-        System.out.println("Merging done!");
-        System.out.println("Size is " + newNumberList.size());
-        System.out.println(newNumberList);
-        System.out.println("-----");
-
-        for (String number : newNumberList) {
-            fuckingNumbers.add(Integer.parseInt(number));
+        for (String number : numbersInString) {
+            numbersInInt.add(Integer.parseInt(number));
         }
-        Collections.sort(fuckingNumbers);
-        System.out.println(fuckingNumbers);
-        System.out.println("Sorting done!");
-        System.out.println("-----");
-        System.out.println("Converting to String");
-        List<String> result = new ArrayList<>(fuckingNumbers.size());
-        for (Integer myInt : fuckingNumbers) {
+        Collections.sort(numbersInInt);
+        List<String> result = new ArrayList<>(numbersInInt.size());
+        for (Integer myInt : numbersInInt) {
             result.add(myInt.toString());
         }
-        System.out.println(result);
+        return result;
     }
+    private static void EndlessStreamOfRandomNumbers() {
 
+    }
     public static void main(String[] args) {
-//        nameSorter(names);
-//        System.out.println(nameSorter(names));
-//        upperCaseAndBackSorted(names);
-//        System.out.println(upperCaseAndBackSorted(names));
+        nameSorter(names);
+        System.out.println(nameSorter(names));
+        upperCaseAndBackSorted(names);
+        System.out.println(upperCaseAndBackSorted(names));
         ascendNumbers(numbers);
+        System.out.println(ascendNumbers(numbers));
     }
 }
