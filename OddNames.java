@@ -1,46 +1,28 @@
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.*;
 
-public class OddNames <E> {
-    private int index;
-    private E value;
-
-    public OddNames(int index, E value) {
-        this.index = index;
-        this.value = value;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public E getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return value + ". " + index;
-    }
-
-    public static <E> Function<E, OddNames<E>> indexed() {
-        return new Function<E, OddNames<E>>() {
-            int index = 1;
-
-            @Override
-            public OddNames<E> apply(E e) {
-//                index++;
-                return new OddNames<>(index++, e);
+public class OddNames {
+        private static List<String> names = Arrays.asList("Sam", "Pamela", "Dave",
+                "Pascal", "Erik", "Lana", "Taras", "Vika", "Ania", "Alex", "Ivanna", "Alina");
+    private static StringBuilder nameSorter(List<String> names){
+        StringBuilder result = new StringBuilder();
+        for (int i=0; i<names.size();i++) {
+            if (i%2 != 0) {
+                result.append(i).append(". ").append(names.get(i)).append(" ");
             }
-        };
-    }
-}
+        }
+        return result;
 
-class OddNamesApplication {
+    }
+        private static List <String> upperCaseAndBackSorted (List<String> names) {
+                Collections.sort(names);
+                Collections.reverse(names);
+                names.replaceAll(String::toUpperCase);
+                return names;
+        }
     public static void main(String[] args) {
-        Stream<String> stream = Stream.of("Sam", "Pamela", "Dave", "Pascal", "Erik", "Lana", "Taras", "Vika");
-        stream.map(OddNames.indexed()).forEachOrdered(e -> {
-            System.out.println(e.getIndex() + ". " + e.getValue());
-        });
+        nameSorter(names);
+        System.out.println(nameSorter(names));
+        upperCaseAndBackSorted(names);
+        System.out.println(upperCaseAndBackSorted(names));
     }
 }
