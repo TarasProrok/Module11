@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Stream;
 
 public class OddNames {
     private static List<String> names = Arrays.asList("Sam", "Pamela", "Dave",
@@ -38,9 +39,7 @@ public class OddNames {
         }
         return result;
     }
-    private static void EndlessStreamOfRandomNumbers() {
 
-    }
     public static void main(String[] args) {
         nameSorter(names);
         System.out.println(nameSorter(names));
