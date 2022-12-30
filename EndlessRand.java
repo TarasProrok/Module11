@@ -15,14 +15,10 @@ public class EndlessRand {
         n = 1* (a * n + c) % methodToPower(2L,48);
         return n;
     }
-    private static void EndlessStreamOfRandomNumbers() {
+    public static void EndlessStreamOfRandomNumbers() {
         Long Sd = 1L;
         Stream.iterate(Sd, n -> next(n))
-                .limit(10)
+                .limit(5)
                 .forEach(System.out::println);
-    }
-
-    public static void main(String[] args) {
-        EndlessStreamOfRandomNumbers();
     }
 }
